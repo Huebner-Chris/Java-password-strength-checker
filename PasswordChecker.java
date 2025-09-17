@@ -52,7 +52,7 @@
                 }
                
             }
-             if(password.length() >= 16){
+             if(password.length() >= 15){
                 score+=15;
               }
               else if(password.length() >= 12){
@@ -61,25 +61,25 @@
                else if(password.length() >= 8){
                   score+=5;
                }
-             if(number >= 6){
+             if(number >= 4){
                 score+=15;
               }
-              else if(number >= 4){
+              else if(number >= 3){
                  score+=10;
              }
                else if(number >= 2){
                   score+=5;
                }
-             if(symbol >= 6){
+             if(symbol >= 4){
                 score+=15;
               }
-              else if(symbol >= 4){
+              else if(symbol >= 3){
                  score+=10;
              }
                else if(symbol >= 2){
                   score+=5;
                }
-               System.out.println(score);
+               
 
             for(int i=0; password.length() > i;i++){
               if (Character.isUpperCase(password.charAt(i))){
@@ -88,16 +88,26 @@
                     score++;
                 }
             }
+            }
             for(int k = 0; k < password.length() - 2; k++){
               if (password.charAt(k) == password.charAt(k+1) && password.charAt(k) == password.charAt(k+2)){
-                score++;
-                System.out.println("3 in a row");
-               
-
-
+                score+= 5;
               }
-            }
+            
         }
+        if(score >= 90){
+            System.out.println("Password Strength: Very Strong");
+        }
+        else if(score >= 60){
+            System.out.println("Password Strength: Strong");
+        }
+        else if(score >= 35){
+            System.out.println("Password Strength: Medium");
+        }
+        else {
+            System.out.println("Password Strength: Weak");
+        }
+        
     
 
 
