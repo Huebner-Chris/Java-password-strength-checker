@@ -4,7 +4,7 @@
         public static void main(String[] args) {
             
         
-            int letter, number, symbol, cap;
+            int letter, number, symbol, cap, low;
             int score =0;
         
             Scanner sc = new Scanner(System.in);
@@ -18,10 +18,17 @@
                 number =0;
                 symbol =0;
                 cap =0;
+                low =0;
                 
 
                 
                 for(int i=0; i < password.length(); i++){
+                    if(Character.isUpperCase(password.charAt(i))){
+                        cap++;
+                    }
+                     if(Character.isLowerCase(password.charAt(i))){
+                        low++;
+                    }
                     if (Character.isLetter(password.charAt(i)))
 {
                         letter++;
@@ -37,7 +44,19 @@
                 if(password.length() >= 8){
                  if( number >= 2){
                   if(symbol>= 2){
-                   break;
+                    if(cap >= 1){
+                      if(low >=1){
+                        break;
+                     }
+                      else{
+                        System.out.print("Password needs to have 1 lower case letter ");
+                      }
+                    
+                     }
+                      else{
+                        System.out.print("Password needs to have 1 captial case letter ");
+                      }
+                
                 }
                     else{
                       System.out.print("Password needs to have 2 symbols ");
@@ -71,7 +90,7 @@
                   score+=5;
                }
              if(symbol >= 4){
-                score+=15;
+                score+=12;
               }
               else if(symbol >= 3){
                  score+=10;
@@ -87,15 +106,15 @@
                 if(Character.isLowerCase(password.charAt(i + 1))){
                     score++;
                 }
-            }
+             }
             }
             for(int k = 0; k < password.length() - 2; k++){
               if (password.charAt(k) == password.charAt(k+1) && password.charAt(k) == password.charAt(k+2)){
-                score+= 5;
+                score+= 7;
               }
             
         }
-        if(score >= 90){
+        if(score >= 80){
             System.out.println("Password Strength: Very Strong");
         }
         else if(score >= 60){
